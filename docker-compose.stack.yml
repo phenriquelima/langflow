@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  langflow:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "7860:7860"
+    command: langflow run --host 0.0.0.0
+
+
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.langflow.rule=Host(`08.afcode.online`)"
+      - "traefik.http.routers.langflow.entrypoints=websecure"
+      - "traefik.http.services.langflow.loadbalancer.server.port=7860"
+      - "traefik.http.routers.langflow.service=langflow"
+      - "traefik.http.routers.langflow.tls.certresolver=leresolver"
+      - "traefik.docker.network=portainer_default"
+
+networks:
+  default:
+    name: portainer_default
+    external: true
