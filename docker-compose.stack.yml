@@ -8,6 +8,8 @@ services:
     ports:
       - "7860:7860"
     command: langflow run --host 0.0.0.0
+    environment:
+      - LANGFLOW_AUTO_LOGIN=false
 
 
     labels:
