@@ -13,7 +13,6 @@ services:
       - LANGFLOW_NEW_USER_IS_ACTIVE=true
       - LANGFLOW_SUPERUSER=langflow
       - LANGFLOW_SUPERUSER_PASSWORD=langflow.afcode
-      - LANGFLOW_SECRET_KEY=secret
 
 
     labels:
